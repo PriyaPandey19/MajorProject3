@@ -7,6 +7,7 @@ import googleIcon from "../assets/google-icon.png";
 import Navbar from "../components/Navbar";
 import mockup from "../assets/mockup.png";
 import appsGrid from "../assets/apps-grid.png";
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const HomePage = ({ user, onLogin, onLogout }) => {
   const navigate = useNavigate();
@@ -248,7 +249,7 @@ const HomePage = ({ user, onLogin, onLogout }) => {
               <div className="marquee-row overflow-hidden">
                
                 <div className="marquee-right flex gap-4 whitespace-nowrap animate-marquee-reverse">
-                  {[...tags, ...tags].map((tag, i) => (
+                  {[...tags, ...tags,...tags].map((tag, i) => (
                     <span
                       key={`r-${i}`}
                       className="px-4 py-2 bg-[#161616] border border-gray-700 rounded-xl text-sm text-gray-200 flex items-center gap-1"
