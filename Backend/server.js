@@ -3,47 +3,46 @@ dotenv.config();
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
+import path from "path";
+import { fileURLToPath } from "url";
+
 import userRoutes from "./routes/userRoutes.js";
 import authRoutes from "./routes/authRoutes.js";
 import portfolioRoutes from "./routes/portfolio.js";
-
-// --- Add these imports for serving React build ---
-import path from "path";
-import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
-// --- Enable CORS before routes ---
+// --- CORS ---
 app.use(cors({
-  origin: ["http://localhost:5173", "http://localhost:5174"], // allow both dev ports
+  origin: ["http://localhost:5173", "http://localhost:5174"],
   credentials: true
 }));
 
-// --- Parse JSON ---
+// --- JSON ---
 app.use(express.json());
 
-// --- Routes ---
+// --- API Routes ---
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/portfolio", portfolioRoutes);
 
+// --- Serve Vite frontend build ---
+// No cd needed — use absolute path from __dirname
+const frontendDist = path.join(__dirname, "../frontend/dist");
+app.use(express.static(frontendDist));
 
-// --- Serve React frontend build ---
-app.use(express.static(path.join(__dirname, "../frontend/dist"))); // adjust path if your build folder is elsewhere
-
-// --- React routing: send index.html for any unknown route ---
 app.get(/^(?!\/api).*$/, (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/dist", "index.html")); 
+  res.sendFile(path.join(frontendDist, "index.html"));
 });
 
 // --- MongoDB connection ---
 const MONGODB_URL = process.env.MONGODB_URL;
 if (!MONGODB_URL) {
-  console.error("FATAL error: MONGODB_URL is not defined in .env file");
+  console.error("FATAL: MONGODB_URL is not defined");
   process.exit(1);
 }
 
@@ -53,6 +52,5 @@ mongoose.connect(MONGODB_URL, { serverSelectionTimeoutMS: 5000, family: 4 })
 
 // --- Start server ---
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-  console.log("Server is ready to communicate with the React App!");
+  console.log(`Server running on port ${PORT}`);
 });
