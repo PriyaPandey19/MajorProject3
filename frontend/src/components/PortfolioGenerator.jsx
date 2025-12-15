@@ -376,17 +376,17 @@ const buildPortfolioData = () => ({
           <h2 className="text-2xl font-bold text-white mb-4 flex justify-between items-center">
             Live 3D Visualization Preview
 
-            <div className="flex gap-2">
+            <div className="flex gap-2 flex-col sm:flex-row">
             <button
               onClick={handleChangePortfolio}
-              className="ml-4 bg-indigo-600 text-white px-4 py-2 rounded-md text-sm hover:bg-indigo-700 transition"
+              className="w-full sm:w-auto ml-0 sm:ml-4 bg-indigo-600 text-white px-4 py-2 rounded-md text-sm hover:bg-indigo-700 transition"
             >
               Change Portfolio
             </button>
             
             <button
       onClick={() => setIsPreviewOpen(true)}
-      className="bg-emerald-600 text-white px-4 py-2 rounded-md text-sm hover:bg-emerald-700 transition"
+      className="w-full sm:w-auto bg-emerald-600 text-white px-4 py-2 rounded-md text-sm hover:bg-emerald-700 transition"
     >
       View Here
     </button>
@@ -531,8 +531,8 @@ const buildPortfolioData = () => ({
       </div>
 
       {/* Right Panel */}
-      <div className="lg:col-span-1 h-screen">
-        <div className="bg-gray-900 p-6 rounded-2xl shadow-xl min-h-[1099px] text-white flex flex-col">
+      <div className="lg:col-span-1">
+        <div className="bg-gray-900 p-6 rounded-2xl shadow-xl **h-full** text-white flex flex-col">
           <h2 className="text-2xl font-bold text-white mb-4 flex justify-between items-center">
             Saved Portfolio Sections
             <button

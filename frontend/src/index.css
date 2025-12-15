@@ -2,76 +2,106 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-
-
-::-webkit-scrollbar{
-    width:8px;
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px; /* slightly smaller on mobile */
 }
-::-webkit-scrollbar-track{
-    background: #1f2937;
+::-webkit-scrollbar-track {
+  background: #1f2937;
 }
-::-webkit-scrollbar-thumb{
-    background-color: #6b21a8;
-    border-radius:4px ;
+::-webkit-scrollbar-thumb {
+  background-color: #6b21a8;
+  border-radius: 4px;
 }
 
+/* Body & HTML */
 body, html {
   background-color: #000;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  overflow-x: hidden; /* prevent horizontal scroll */
 }
+
+/* Scroll marquee animation wrapper */
 .scroll-marquee {
   animation: marquee 18s linear infinite;
+  width: max-content;
+}
+
+/* Marquee variants */
+.marquee-left,
+.marquee-right {
+  display: flex;
+  width: max-content; /* fit content dynamically */
 }
 
 .marquee-left {
-  display: flex;
-  width: fit-content;
   animation: scroll-left 18s linear infinite;
 }
 
 .marquee-right {
-  display: flex;
-  width: fit-content;
   animation: scroll-right 18s linear infinite;
 }
+
+/* Smooth scrolling */
 html {
   scroll-behavior: smooth;
 }
 
+/* Keyframes for left-right marquee */
 @keyframes scroll-left {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); } /* full width scroll */
 }
 
 @keyframes scroll-right {
-  from {
-    transform: translateX(-50%);
-  }
-  to {
-    transform: translateX(0);
-  }
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
 }
 
+/* Continuous X scroll */
 @keyframes scrollX {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); } /* full width scroll */
 }
 
 .animate-scroll-x {
   animation: scrollX 60s linear infinite;
 }
 
+/* Marquee animation */
 @keyframes marquee {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  100% { transform: translateX(-100%); } /* full width scroll */
 }
 
+/* Responsive tweaks using Tailwind breakpoints */
+@media (max-width: 1024px) {
+  .scroll-marquee,
+  .marquee-left,
+  .marquee-right {
+    font-size: 0.9rem; /* smaller text on tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .scroll-marquee,
+  .marquee-left,
+  .marquee-right {
+    font-size: 0.8rem; /* smaller text on mobile */
+  }
+}
+
+@media (max-width: 480px) {
+  ::-webkit-scrollbar {
+    width: 4px; /* even smaller scrollbar on phones */
+  }
+
+  .scroll-marquee,
+  .marquee-left,
+  .marquee-right {
+    font-size: 0.7rem; /* small text */
+    animation-duration: 25s; /* slower for small screens */
+  }
+}

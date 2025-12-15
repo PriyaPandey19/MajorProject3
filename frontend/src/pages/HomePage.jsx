@@ -62,7 +62,7 @@ const HomePage = ({ user, onLogin, onLogout }) => {
     <>
       <Navbar user={user} onLogout={onLogout} />
 
-      <div className="min-h-screen bg-black text-white px-10 pt-0 pb-20 flex gap-16">
+      <div className="min-h-screen bg-black text-white px-10 pt-0 pb-20 flex flex-col lg:flex-row gap-8 lg:gap-16">
         {/* left section */}
         <div className="flex-1 max-w-xl">
           <h2 className="text-2xl font-bold mb-4">
@@ -139,8 +139,8 @@ const HomePage = ({ user, onLogin, onLogout }) => {
 
       {/* Feature card section */}
       <div className="w-full bg-black -mt-30 px-10">
-        <div className="flex justify-between items-center text-white gap-16">
-          <div className="flex-shrink-0 max-w-3xl">
+        <div className="flex flex-col lg:flex-row justify-between items-center text-white gap-4 lg:gap-16">
+          <div className="w-full lg:max-w-3xl lg:flex-shrink-0">
             <img
               src={mockup}
               alt="Portfolio Mockup"
@@ -175,7 +175,7 @@ const HomePage = ({ user, onLogin, onLogout }) => {
       <div  id="features" className="w-full px-10 py-20 bg-black text-white">
         <div className="max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-x-0 gap-y-10">
           {/* LEFT CARD */}
-          <div className="bg-[#0c0c0c]  w-[430px] ml-[139px] min-h-[410px] flex flex-col justify-between border border-gray-800 rounded-2xl p-10 shadow-[0_0_40px_rgba(0,0,0,0.6)] hover:scale-[1.01] transition-all">
+          <div className="bg-[#0c0c0c] w-full md:w-[430px] md:ml-[139px] min-h-[410px] flex flex-col justify-between border border-gray-800 rounded-2xl p-10 shadow-[0_0_40px_rgba(0,0,0,0.6)] hover:scale-[1.01] transition-all">
             <div className="flex-grow">
               <h2 className="text-4xl font-bold mb-4">Sync your tokens</h2>
               <p className="text-gray-400 mb-6 leading-relaxed">
@@ -200,7 +200,7 @@ const HomePage = ({ user, onLogin, onLogout }) => {
           </div>
 
           {/* RIGHT CARD */}
-          <div className="bg-[#0c0c0c]  w-[430px] min-h-[410px] flex flex-col justify-between border border-gray-800 rounded-2xl p-10 shadow-[0_0_40px_rgba(0,0,0,0.6)] hover:scale-[1.01] transition-all">
+          <div className="bg-[#0c0c0c] w-full md:w-[430px] min-h-[410px] flex flex-col justify-between border border-gray-800 rounded-2xl p-10 shadow-[0_0_40px_rgba(0,0,0,0.6)] hover:scale-[1.01] transition-all">
             <div className="flex-grow">
               <h2 className="text-4xl font-extrabold mb-4">Customize outputs</h2>
               <p className="text-gray-400 mb-6 leading-relaxed">
