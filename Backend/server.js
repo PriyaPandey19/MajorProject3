@@ -31,10 +31,6 @@ app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/portfolio", portfolioRoutes);
 
-// --- Root endpoint ---
-app.get("/", (req, res) => {
-  res.send("GSAP portfolio API is running. Connect to MongoDB.");
-});
 
 // --- Serve React frontend build ---
 app.use(express.static(path.join(__dirname, "../frontend/dist"))); // adjust path if your build folder is elsewhere
