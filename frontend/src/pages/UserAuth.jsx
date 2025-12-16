@@ -33,7 +33,7 @@ const UserAuth = ({ onLogin }) => {
 
 
     try{
-        const res = await fetch("http://localhost:5000/api/auth/send-otp",{
+        const res = await fetch("/api/auth/send-otp",{
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify({email}),
@@ -63,7 +63,7 @@ const UserAuth = ({ onLogin }) => {
     setError("");
 
     try{
-        const res = await fetch("http://localhost:5000/api/auth/verify-otp",{
+        const res = await fetch("/api/auth/verify-otp",{
             method:"POST",
             headers:{"Content-Type":"application/json"},
             body:JSON.stringify({email,otp,uid,name,provider}),
