@@ -18,7 +18,7 @@ const PORT = process.env.PORT || 5000;
 
 // --- CORS ---
 app.use(cors({
-  origin: ["http://localhost:5173", "http://localhost:5174", "https://your-frontend-url.onrender.com"],
+  origin: ["http://localhost:5173", "http://localhost:5174", "https://majorproject3-by3o.onrender.com"],
   credentials: true
 }));
 

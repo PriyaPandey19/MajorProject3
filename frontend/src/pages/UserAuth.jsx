@@ -18,7 +18,7 @@ const UserAuth = ({ onLogin }) => {
  
 
 
-const API = "http://localhost:5000";
+const API =   process.env.REACT_APP_BACKEND_URL || "http://localhost:5000";
 
  const handleRequestOTP =async(e) => {       //handle otp request
     e.preventDefault();
