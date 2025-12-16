@@ -7,7 +7,7 @@ import googleIcon from "../assets/google-icon.png";
 import Navbar from "../components/Navbar";
 import mockup from "../assets/mockup.png";
 import appsGrid from "../assets/apps-grid.png";
-import '@fortawesome/fontawesome-free/css/all.min.css';
+import '@fortawesome/fontawesome-free/css/all.min.css'; 
 
 const HomePage = ({ user, onLogin, onLogout }) => {
   const navigate = useNavigate();
@@ -271,7 +271,7 @@ const HomePage = ({ user, onLogin, onLogout }) => {
           {[...logos,...logos,...logos].map((name, i) => (
             <img  
             key={i}
-            src={`/src/logos/${name}.png`}
+            src={`/logos/${name}.png`}
             alt={`${name} logo`}
             className="h-12 w-auto object-contain"
             />
