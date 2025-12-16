@@ -532,7 +532,7 @@ const buildPortfolioData = () => ({
 
       {/* Right Panel */}
       <div className="lg:col-span-1">
-        <div className="bg-gray-900 p-6 rounded-2xl shadow-xl  text-white flex flex-col max-h-[80vh]">
+        <div className="bg-gray-900 p-6 rounded-2xl shadow-xl  text-white flex flex-col max-h-[90vh]">
           <h2 className="text-2xl font-bold text-white mb-4 flex justify-between items-center">
             Saved Portfolio Sections
             <button
